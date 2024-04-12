@@ -18,7 +18,7 @@ RUN set -xe && \
       make -j$(nproc) && \
       make -j$(nproc) install && \
       rm -rf /tmp/*; \
-    done \
+    done
 
 # Check for latest version here: https://ftpmirror.gnu.org/bash
 ENV BASH_VERSIONS \
