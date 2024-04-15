@@ -2,24 +2,6 @@
 # This is just a snapshot of buildpack-deps:buster that was last updated on 2019-12-28.
 FROM judge0/buildpack-deps:buster-2019-12-28
 
-# Check for latest version here: https://www.ruby-lang.org/en/downloads
-ENV RUBY_VERSIONS \
-      2.7.0
-RUN set -xe && \
-    for VERSION in $RUBY_VERSIONS; do \
-      curl -fSsL "https://cache.ruby-lang.org/pub/ruby/${VERSION%.*}/ruby-$VERSION.tar.gz" -o /tmp/ruby-$VERSION.tar.gz && \
-      mkdir /tmp/ruby-$VERSION && \
-      tar -xf /tmp/ruby-$VERSION.tar.gz -C /tmp/ruby-$VERSION --strip-components=1 && \
-      rm /tmp/ruby-$VERSION.tar.gz && \
-      cd /tmp/ruby-$VERSION && \
-      ./configure \
-        --disable-install-doc \
-        --prefix=/usr/local/ruby-$VERSION && \
-      make -j$(nproc) && \
-      make -j$(nproc) install && \
-      rm -rf /tmp/*; \
-    done
-
 # Check for latest version here: https://nodejs.org/en
 ENV NODE_VERSIONS \
       20.12.2
@@ -47,6 +29,24 @@ RUN set -xe && \
     rm -rf /var/lib/apt/lists/* && \
     for VERSION in $TYPESCRIPT_VERSIONS; do \
       npm install -g typescript@$VERSION; \
+    done \
+
+# Check for latest version here: https://www.ruby-lang.org/en/downloads
+ENV RUBY_VERSIONS \
+      2.7.3
+RUN set -xe && \
+    for VERSION in $RUBY_VERSIONS; do \
+      curl -fSsL "https://cache.ruby-lang.org/pub/ruby/${VERSION%.*}/ruby-$VERSION.tar.gz" -o /tmp/ruby-$VERSION.tar.gz && \
+      mkdir /tmp/ruby-$VERSION && \
+      tar -xf /tmp/ruby-$VERSION.tar.gz -C /tmp/ruby-$VERSION --strip-components=1 && \
+      rm /tmp/ruby-$VERSION.tar.gz && \
+      cd /tmp/ruby-$VERSION && \
+      ./configure \
+        --disable-install-doc \
+        --prefix=/usr/local/ruby-$VERSION && \
+      make -j$(nproc) && \
+      make -j$(nproc) install && \
+      rm -rf /tmp/*; \
     done
 
 RUN set -xe && \

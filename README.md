@@ -6,7 +6,6 @@ This is a Docker image with installed compilers, interpreters, and [sandbox](htt
 ## Get Started
 You can [host it yourself](https://github.com/judge0/judge0/blob/master/CHANGELOG.md#deployment-procedure).
 
-
 ## Supported Languages
 <table>
 <thead>
@@ -23,10 +22,6 @@ You can [host it yourself](https://github.com/judge0/judge0/blob/master/CHANGELO
 <tr>
 <td style="text-align:center">2</td>
 <td style="text-align:center">TypeScript (5.4.5)</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">Ruby (2.7.0)</td>
 </tr>
 </tbody>
 </table>
