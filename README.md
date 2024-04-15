@@ -4,7 +4,7 @@
 This is a Docker image with installed compilers, interpreters, and [sandbox](https://github.com/ioi/isolate). It is used as a base image for [Judge0](https://github.com/judge0/judge0).
 
 ## Get Started
-You can host [host it yourself](https://github.com/judge0/judge0/blob/master/CHANGELOG.md#deployment-procedure).
+You can [host it yourself](https://github.com/judge0/judge0/blob/master/CHANGELOG.md#deployment-procedure).
 
 
 ## Supported Languages
@@ -26,23 +26,10 @@ You can host [host it yourself](https://github.com/judge0/judge0/blob/master/CHA
 </tr>
 <tr>
 <td style="text-align:center">3</td>
-<td style="text-align:center">Python (3.12.3)</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
 <td style="text-align:center">Ruby (2.7.0)</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">Bash (5.0)</td>
-</tr>
-<tr>
-<td style="text-align:center">6</td>
-<td style="text-align:center">SQLite (3.7.2)</td>
 </tr>
 </tbody>
 </table>
-</details>
 
 ## Sandbox
 For sandbox judge0 is using [Isolate](https://github.com/ioi/isolate) (licensed under [GPL v2](https://github.com/ioi/isolate/blob/master/LICENSE)).

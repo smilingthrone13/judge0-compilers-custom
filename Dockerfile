@@ -20,40 +20,6 @@ RUN set -xe && \
       rm -rf /tmp/*; \
     done
 
-# Check for latest version here: https://ftpmirror.gnu.org/bash
-ENV BASH_VERSIONS \
-      5.0
-RUN set -xe && \
-    for VERSION in $BASH_VERSIONS; do \
-      curl -fSsL "https://ftpmirror.gnu.org/bash/bash-$VERSION.tar.gz" -o /tmp/bash-$VERSION.tar.gz && \
-      mkdir /tmp/bash-$VERSION && \
-      tar -xf /tmp/bash-$VERSION.tar.gz -C /tmp/bash-$VERSION --strip-components=1 && \
-      rm /tmp/bash-$VERSION.tar.gz && \
-      cd /tmp/bash-$VERSION && \
-      ./configure \
-        --prefix=/usr/local/bash-$VERSION && \
-      make -j$(nproc) && \
-      make -j$(nproc) install && \
-      rm -rf /tmp/*; \
-    done
-
-# Check for latest version here: https://www.python.org/downloads
-ENV PYTHON_VERSIONS \
-      3.12.3
-RUN set -xe && \
-    for VERSION in $PYTHON_VERSIONS; do \
-      curl -fSsL "https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tar.xz" -o /tmp/python-$VERSION.tar.xz && \
-      mkdir /tmp/python-$VERSION && \
-      tar -xf /tmp/python-$VERSION.tar.xz -C /tmp/python-$VERSION --strip-components=1 && \
-      rm /tmp/python-$VERSION.tar.xz && \
-      cd /tmp/python-$VERSION && \
-      ./configure \
-        --prefix=/usr/local/python-$VERSION && \
-      make -j$(nproc) && \
-      make -j$(nproc) install && \
-      rm -rf /tmp/*; \
-    done
-
 # Check for latest version here: https://nodejs.org/en
 ENV NODE_VERSIONS \
       20.12.2
@@ -82,13 +48,6 @@ RUN set -xe && \
     for VERSION in $TYPESCRIPT_VERSIONS; do \
       npm install -g typescript@$VERSION; \
     done
-
-# Check for latest version here: https://packages.debian.org/buster/sqlite3
-# Used for support of SQLite.
-RUN set -xe && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends sqlite3 && \
-    rm -rf /var/lib/apt/lists/*
 
 RUN set -xe && \
     apt-get update && \
